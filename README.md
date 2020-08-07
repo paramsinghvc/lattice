@@ -116,12 +116,20 @@ const App = () => (
       <Cell y-offset={{ sm: '2', md: '1' }} y-span={{ sm: '1', md: '2' }}>
         2
       </Cell>
-      <Cell>3</Cell>
+      <Cell>
+        <Box pt='5px' fontWeight='bold' color='aqua'>
+          3
+        </Box>
+      </Cell>
       <Cell x-span={{ sm: '2', md: '1' }}>4</Cell>
     </Grid>
   </ThemeProvider>
 )
 ```
+
+The library exports Grid, Cell and a general usage Box for general use divs. Using these, there won't be a need of writing a styled component ever. All the particular styles can be inlined by virtue of styled-system properties.
+
+The styled components being extendable makes the generic Box component to be wrapped around for more specific frequently used elements when needed.
 
 # API
 
