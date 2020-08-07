@@ -4,7 +4,6 @@
 
 <!-- PROJECT SHIELDS -->
 
-[![NPM](https://img.shields.io/npm/v/@mollycule/lattice.svg?style=for-the-badge)](https://www.npmjs.com/package/@mollycule/lattice)
 [![Build Status][build-shield]]()
 [![MIT License][license-shield]][license-url]
 [![Contributors][contributors-shield]]()
@@ -21,12 +20,12 @@
   <h3 align="center">Lattice</h3>
 
   <p align="center">
-    React hook to keep a watch on the changing props or state variables of a React component/hook.
+    CSS Grid based layout renderer based on styled-components and styled-system
     <br />
     <a href="https://www.npmjs.com/package/@mollycule/lattice"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://codesandbox.io/s/lattice-demo-yfpb1?fontsize=14">View Demo</a>
+    <a href="https://codesandbox.io/s/mollycule-lattice-demo-m4olk?fontsize=14">View Demo</a>
     ·
     <a href="https://github.com/paramsinghvc/lattice/issues">Report Bug</a>
     ·
@@ -55,17 +54,15 @@
 
 ## About The Project
 
-**`uselattice`** is a simple plug and play React hook to keep a watch on the changing props or state variables of a React component/hook.
+**`Lattice`** is a standard CSS Grid approach to create make layouting a breeze in your React apps.
 
-```
-uselattice('Weather Component', { latLong, weatherData, getWeather })
-```
-
-It gives the console output as below whenever any change in the listed variables happen in the given component or hook.
-<img src="https://user-images.githubusercontent.com/4329912/85898978-36a6e800-b7f5-11ea-9a46-0295c02c0e57.png" alt="Logo">
+It has support for making bootstrap like responsive layouts very easily in CSS in JS ecosystems, making it very suitable for modern day React ecosystem
+<img src="https://user-images.githubusercontent.com/4329912/89674290-cdc88a80-d8df-11ea-9ef0-9345bb509f98.png" alt="Logo">
 
 ### Built With
 
+- [Styled Components](https://styled-components.com/) 💅
+- [Styled System](https://styled-system.com/)
 - [TypeScript](https://www.typescriptlang.org/)
 - [Create React Library](https://www.npmjs.com/package/create-react-library)
 
@@ -89,34 +86,82 @@ yarn add @mollycule/lattice
 
 ## Usage
 
-```
-uselattice(<Component or Hook Name>, { <prop1>, <state1>, <prop2>, ...  })
-```
-
-Detailed Usage
-
 ```tsx
-import React, { useEffect } from 'react'
+import React from 'react'
+import styled, { ThemeProvider } from 'styled-components'
+import { Grid, Cell as BaseCell, BREAKPOINTS } from '@mollycule/lattice'
 
-import uselattice from '@mollycule/lattice'
+const Cell = styled(BaseCell)`
+  min-height: 50px;
+  background: mediumslateblue;
+  color: white;
+`
 
-const WeatherComp = () => {
-  const latLong = useGeoLocation()
-  const { getWeather, weatherData } = useWeather()
+const App = () => (
+  <ThemeProvider theme={{ breakpoints: BREAKPOINTS }}>
+    <Grid
+      width='70vw'
+      mx='auto'
+      gap='3px'
+      cols={{ xs: 2, sm: 3, md: 4 }}
+      height='500px'
+      alignContent='center'
+      alignItems='center'
+      justifyContent='center'
+      justifyItems='start'
+    >
+      <Cell x-offset='3' x-span='2'>
+        1
+      </Cell>
+      <Cell y-offset={{ sm: '2', md: '1' }} y-span={{ sm: '1', md: '2' }}>
+        2
+      </Cell>
+      <Cell>3</Cell>
+      <Cell x-span={{ sm: '2', md: '1' }}>4</Cell>
+    </Grid>
+  </ThemeProvider>
+)
+```
 
-  uselattice('Weather Component', { latLong, weatherData, getWeather })
+# API
 
-  useEffect(() => {
-    getWeather(latLong);
-  }, [getWeather, latLong])
+## Grid Props
 
-  return (
-    <Holder>
-      {...}
-    </Holder>
-  )
+| Prop Name      | Value Type       | Example                                               | Mapped CSS property     |
+| -------------- | ---------------- | ----------------------------------------------------- | ----------------------- |
+| gap            | string           | `gap='2px'`                                           | `grid-gap`              |
+| rowGap         | string           | `rowGap='2px'`                                        | `grid-row-gap`          |
+| columnGap      | string           | `columnGap='2px'`                                     | `grid-column-gap`       |
+| alignItems     | string           | `alignItems='center'`                                 | `align-items`           |
+| alignContent   | string           | `alignContent='center'`                               | `align-content`         |
+| justifyItems   | string           | `justifyItems='center'`                               | `justify-items`         |
+| justifyContent | string           | `justifyContent='center'`                             | `justify-content`       |
+| cols           | number or string | `cols={2}` or `cols='repeat(3, minmax(200px, auto))'` | `grid-template-columns` |
+| flow           | string           | `flow='row'`                                          | `grid-auto-flow`        |
+| areas          | string[]         | `areas={['a a b', 'c c b']}'`                         | `grid-template-areas`   |
+
+## Cell Props
+
+| Prop Name | Value Type | Example        | Mapped CSS property |
+| --------- | ---------- | -------------- | ------------------- |
+| area      | string     | `area='a'`     | `grid-area`         |
+| x-offset  | string     | `x-offset='2'` | `grid-column-start` |
+| x-span    | string     | `x-span='2'`   | `grid-column-end`   |
+| y-offset  | string     | `y-offset='3'` | `grid-row-start`    |
+| y-span    | string     | `y-span='2'`   | `grid-row-end`      |
+
+All the above property values are responsive compatible, which can be specified based on the [breakpoints](https://styled-system.com/responsive-styles#using-objects) approach of styled-system. A default breakpoint is also exported from the library based on Bootstrap responsive system.
+
+```
+export const BREAKPOINTS = {
+  xs: 0,
+  sm: '480px',
+  md: '768px',
+  lg: '1024px'
 }
 ```
+
+Note: Please use string values most of the time in order to prevent automatic suffixing of numeric values by 'px' in React as these custom properties don't fall under React [unitless properties](https://github.com/facebook/react/blob/4131af3e4bf52f3a003537ec95a1655147c81270/src/renderers/dom/shared/CSSProperty.js#L15-L59).
 
 ## License
 
@@ -152,7 +197,7 @@ Project Link: [https://github.com/paramsinghvc/lattice](https://github.com/param
 
 ## Acknowledgements
 
-- [WDYR - Why Did You Render](https://github.com/welldone-software/why-did-you-render)
+- [Styled CSS Grid](https://styled-css-grid.js.org/)
 - [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
 - [Img Shields](https://shields.io)
 
