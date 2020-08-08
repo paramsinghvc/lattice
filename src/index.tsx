@@ -9,14 +9,18 @@ import {
   position,
   layout,
   flexbox,
+  border,
+  shadow,
   TypographyProps,
   SpaceProps,
   ColorProps,
   PositionProps,
   LayoutProps,
   FlexboxProps,
+  BorderProps,
   system,
-  ResponsiveValue
+  ResponsiveValue,
+  ShadowProps
 } from 'styled-system'
 
 export const BREAKPOINTS = {
@@ -48,13 +52,22 @@ export const CellBase = styled.div<StyledSystemProps>`
     ${layout}
 `
 
-export const Box = styled.div<StyledSystemProps & FlexboxProps>`
+export type BoxProps = StyledSystemProps &
+  FlexboxProps &
+  BorderProps &
+  PositionProps &
+  ShadowProps
+
+export const Box = styled.div<BoxProps>`
     ${space}
     ${typography}
     ${color}
     ${position}
     ${layout}
     ${flexbox}
+    ${border}
+    ${position}
+    ${shadow}
 `
 
 const flowResolver = (flow = 'row') => flow
