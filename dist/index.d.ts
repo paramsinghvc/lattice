@@ -1,4 +1,4 @@
-import { TypographyProps, SpaceProps, ColorProps, PositionProps, LayoutProps, FlexboxProps, ResponsiveValue } from 'styled-system';
+import { TypographyProps, SpaceProps, ColorProps, PositionProps, LayoutProps, FlexboxProps, BorderProps, ResponsiveValue, ShadowProps } from 'styled-system';
 export declare const BREAKPOINTS: {
     xs: number;
     sm: string;
@@ -8,7 +8,8 @@ export declare const BREAKPOINTS: {
 export declare type StyledSystemProps = TypographyProps & SpaceProps & ColorProps & PositionProps & LayoutProps;
 export declare const GridBase: import("styled-components").StyledComponent<"section", any, StyledSystemProps, never>;
 export declare const CellBase: import("styled-components").StyledComponent<"div", any, StyledSystemProps, never>;
-export declare const Box: import("styled-components").StyledComponent<"div", any, TypographyProps<Required<import("styled-system").Theme<string | number>>> & SpaceProps<Required<import("styled-system").Theme<string | number>>, string | number | symbol> & ColorProps<Required<import("styled-system").Theme<string | number>>, string | number | symbol> & PositionProps<Required<import("styled-system").Theme<string | number>>> & LayoutProps<Required<import("styled-system").Theme<string | number>>> & FlexboxProps<Required<import("styled-system").Theme<string | number>>>, never>;
+export declare type BoxProps = StyledSystemProps & FlexboxProps & BorderProps & PositionProps & ShadowProps;
+export declare const Box: import("styled-components").StyledComponent<"div", any, BoxProps, never>;
 declare type StyledGridProps = {
     gap: ResponsiveValue<string>;
     rowGap: ResponsiveValue<string>;

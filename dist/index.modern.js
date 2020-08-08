@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { space, typography, color, position, layout, flexbox, system } from 'styled-system';
+import { space, typography, color, position, layout, flexbox, border, shadow, system } from 'styled-system';
 
 function _extends() {
   _extends = Object.assign || function (target) {
@@ -49,7 +49,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -85,7 +85,7 @@ var BREAKPOINTS = {
 };
 var GridBase = styled.section(_templateObject(), space, typography, color, position, layout);
 var CellBase = styled.div(_templateObject2(), space, typography, color, position, layout);
-var Box = styled.div(_templateObject3(), space, typography, color, position, layout, flexbox);
+var Box = styled.div(_templateObject3(), space, typography, color, position, layout, flexbox, border, position, shadow);
 
 var flowResolver = function flowResolver(flow) {
   if (flow === void 0) {

@@ -51,7 +51,7 @@ function _templateObject4() {
 }
 
 function _templateObject3() {
-  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
 
   _templateObject3 = function _templateObject3() {
     return data;
@@ -87,7 +87,7 @@ var BREAKPOINTS = {
 };
 var GridBase = styled.section(_templateObject(), styledSystem.space, styledSystem.typography, styledSystem.color, styledSystem.position, styledSystem.layout);
 var CellBase = styled.div(_templateObject2(), styledSystem.space, styledSystem.typography, styledSystem.color, styledSystem.position, styledSystem.layout);
-var Box = styled.div(_templateObject3(), styledSystem.space, styledSystem.typography, styledSystem.color, styledSystem.position, styledSystem.layout, styledSystem.flexbox);
+var Box = styled.div(_templateObject3(), styledSystem.space, styledSystem.typography, styledSystem.color, styledSystem.position, styledSystem.layout, styledSystem.flexbox, styledSystem.border, styledSystem.position, styledSystem.shadow);
 
 var flowResolver = function flowResolver(flow) {
   if (flow === void 0) {
