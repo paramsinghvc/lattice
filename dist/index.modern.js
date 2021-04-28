@@ -59,7 +59,7 @@ function _templateObject3() {
 }
 
 function _templateObject2() {
-  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
+  var data = _taggedTemplateLiteralLoose(["\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n    ", "\n"]);
 
   _templateObject2 = function _templateObject2() {
     return data;
@@ -84,7 +84,7 @@ var BREAKPOINTS = {
   lg: '1024px'
 };
 var GridBase = styled.section(_templateObject(), space, typography, color, position, layout);
-var CellBase = styled.div(_templateObject2(), space, typography, color, position, layout);
+var CellBase = styled.div(_templateObject2(), space, typography, color, position, layout, flexbox);
 var Box = styled.div(_templateObject3(), space, typography, color, position, layout, flexbox, border, position, shadow);
 
 var flowResolver = function flowResolver(flow) {

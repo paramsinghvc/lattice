@@ -34,7 +34,8 @@ export type StyledSystemProps = TypographyProps &
   SpaceProps &
   ColorProps &
   PositionProps &
-  LayoutProps
+  LayoutProps &
+  FlexboxProps
 
 export const GridBase = styled.section<StyledSystemProps>`
     ${space}
@@ -50,10 +51,10 @@ export const CellBase = styled.div<StyledSystemProps>`
     ${color}
     ${position}
     ${layout}
+    ${flexbox}
 `
 
 export type BoxProps = StyledSystemProps &
-  FlexboxProps &
   BorderProps &
   PositionProps &
   ShadowProps
