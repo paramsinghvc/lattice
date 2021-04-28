@@ -71,7 +71,7 @@ export const Box = styled.div<BoxProps>`
 `
 
 const flowResolver = (flow = 'row') => flow
-const columnsResolver = (cols = 12) =>
+const rowsColumnsResolver = (cols = 12) =>
   typeof cols === 'number' ? `repeat(${cols}, 1fr)` : cols
 
 type StyledGridProps = {
@@ -83,6 +83,7 @@ type StyledGridProps = {
   justifyItems: ResponsiveValue<string>
   justifyContent: ResponsiveValue<string>
   cols: ResponsiveValue<number | string>
+  rows: ResponsiveValue<number | string>
   flow: ResponsiveValue<string>
   areas: ResponsiveValue<string[]>
 }
@@ -150,7 +151,11 @@ export const Grid = styled(GridBase)<Partial<StyledGridProps>>`
     },
     'grid-template-columns': {
       propName: 'cols',
-      transform: columnsResolver
+      transform: rowsColumnsResolver
+    },
+    'grid-template-rows': {
+      propName: 'rows',
+      transform: rowsColumnsResolver
     }
   })}
 `

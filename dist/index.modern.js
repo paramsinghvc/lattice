@@ -95,7 +95,7 @@ var flowResolver = function flowResolver(flow) {
   return flow;
 };
 
-var columnsResolver = function columnsResolver(cols) {
+var rowsColumnsResolver = function rowsColumnsResolver(cols) {
   if (cols === void 0) {
     cols = 12;
   }
@@ -151,7 +151,11 @@ var Grid = styled(GridBase)(_templateObject4(), createStyledProps({
   },
   'grid-template-columns': {
     propName: 'cols',
-    transform: columnsResolver
+    transform: rowsColumnsResolver
+  },
+  'grid-template-rows': {
+    propName: 'rows',
+    transform: rowsColumnsResolver
   }
 }));
 var Cell = styled(CellBase)(_templateObject5(), createStyledProps({

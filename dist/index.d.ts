@@ -19,6 +19,7 @@ declare type StyledGridProps = {
     justifyItems: ResponsiveValue<string>;
     justifyContent: ResponsiveValue<string>;
     cols: ResponsiveValue<number | string>;
+    rows: ResponsiveValue<number | string>;
     flow: ResponsiveValue<string>;
     areas: ResponsiveValue<string[]>;
 };
